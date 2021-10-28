@@ -1,4 +1,4 @@
 To start the app
 
-npm i
+npm i, then
 npm start
