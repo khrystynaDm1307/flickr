@@ -3,7 +3,7 @@ import "./App.css";
 import ImageList from "./components/ImageList.js";
 import constants from "./constants.js";
 import { debounce, checkHttpStatus, parseJSON } from "./utils.js";
-import AbortController from "abort-controller"
+// import AbortController from "abort-controller"
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -23,7 +23,7 @@ export default class App extends React.Component {
 
 	componentDidMount() {
 
-		const controller = new AbortController();
+		// const controller = new AbortController();
 
 		/* Debounced function for search based on input text to mimimize network request on every character typed */
 		this.makeDebouncedSearch = debounce(() => {
@@ -31,7 +31,7 @@ export default class App extends React.Component {
 			/* Make API call for the query */
 			const url = constants.BASE_URL + "&tags=" + this.state.searchText;
 			this.setState({ isLoading: true })
-			fetch(url, { signal: controller.signal })
+			fetch(url)
 				.then(checkHttpStatus)
 				.then(parseJSON)
 				.then(resp => {
